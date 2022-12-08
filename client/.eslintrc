@@ -1,0 +1,36 @@
+{
+    "extends": ["airbnb", "airbnb-typescript", "plugin:react-hooks/recommended"],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "project": "tsconfig.json",
+      "tsconfigRootDir": "client",
+      "sourceType": "module"
+    },
+    "env": {
+      "browser": true,
+      "jest": true
+    },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "paths": ["src"],
+          "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        }
+      }
+    },
+    "rules": {
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off",
+    "linebreak-style": 0,
+      "jsx-a11y/label-has-associated-control": [ "error", {
+        "required": {
+          "some": [ "nesting", "id"  ]
+        }
+      }],
+      "jsx-a11y/label-has-for": [ "error", {
+        "required": {
+          "some": [ "nesting", "id"  ]
+        }
+      }]
+    }
+}
