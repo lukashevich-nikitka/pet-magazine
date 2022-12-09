@@ -1,0 +1,5 @@
+@import '../../../mixins.scss';
+
+.pages-nav-list {
+    @include navigation-list-settings();
+}

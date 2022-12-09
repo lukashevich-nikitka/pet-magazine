@@ -1,0 +1,36 @@
+@mixin default-settings {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+@mixin default-maket-settings($background-color: #0D4266) {
+    max-width: 1920px;
+    padding-left: 7.3vw;
+    padding-right: 7.3vw;
+    font-size: 18px;
+    font-weight: 500;
+    color: #FFFFFF;
+    background-color: $background-color;
+}
+
+@mixin navigation-list-settings($gap: 24px) {
+    display: flex;
+    gap: $gap;
+    white-space: nowrap;
+    list-style-type: none;
+    li {
+        a {
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+    }
+}
+
+@mixin navigation-buyer-icon-settings($icon: '../../../../assets/svg/header-favourite.svg') {
+    background-image: url($icon);
+    background-repeat: no-repeat;
+    height: 27px;
+    width: 27px;
+    background-size: contain;
+}

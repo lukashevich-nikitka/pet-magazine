@@ -2,8 +2,7 @@
     "extends": ["airbnb", "airbnb-typescript", "plugin:react-hooks/recommended"],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-      "project": "tsconfig.json",
-      "tsconfigRootDir": "client",
+      "project": "client/tsconfig.json",
       "sourceType": "module"
     },
     "env": {
@@ -20,7 +19,6 @@
     },
     "rules": {
     "react/jsx-props-no-spreading": "off",
-    "react/prop-types": "off",
     "linebreak-style": 0,
       "jsx-a11y/label-has-associated-control": [ "error", {
         "required": {

@@ -1,0 +1,18 @@
+@import '../../../mixins.scss';
+
+.buyer-nav-list {
+    @include navigation-list-settings(35px);
+
+    .favourites-icon {
+        @include navigation-buyer-icon-settings();
+    }
+    .search-icon {
+        @include navigation-buyer-icon-settings('../../../../assets/svg/header-search.svg');
+    }
+    .user-icon {
+        @include navigation-buyer-icon-settings('../../../../assets/svg/header-communication.svg');
+    }
+    .basket-icon {
+        @include navigation-buyer-icon-settings('../../../../assets/svg/header-basket.svg');
+    }
+}
