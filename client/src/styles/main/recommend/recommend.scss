@@ -1,0 +1,35 @@
+@import '../../mixins.scss';
+
+* {
+  @include default-settings;
+}
+
+.recommend-container {
+  @include default-maket-settings(#FFFFFF, #292929);
+  height: 883px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding-top: 87px;
+
+  .title-area {
+    display: flex;
+    justify-content: space-between;
+    h2 {
+      font-size: 45px;
+      line-height: 58.5px;
+    }
+    button {
+      @include buttons-settings(fit-content, fit-content, transparent, #0D4266, 0px, 0px);
+      font-size: 18px;
+      border-bottom: 2px solid #0D4266;
+    }
+  }
+  // buttons-settings($height: 78px, $width: 284px, $background-color: #FFFFFF, $color: #0D4266, $border-radius: 10px, $border: 0px)
+  .card-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    flex-wrap: wrap;
+  }
+}

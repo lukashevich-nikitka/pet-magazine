@@ -1,0 +1,63 @@
+@import '../../mixins.scss';
+
+* {
+    @include default-settings;
+}
+
+.under-header-container {
+    @include default-maket-settings();
+    display: flex;
+    .left-side {
+        @include under-header-default-position();
+        .lines {
+            @include under-header-images();
+        }
+        .left-cat {
+            @include under-header-images('../../../assets/svg/under-header-left-cat.svg', 16vw, 15.3vw);
+        }
+    }
+    .middle {
+        @include under-header-default-position(56px);
+        max-width: 46.4vw;
+        align-items: center;
+        margin: 0 auto;
+        h1 {
+            @include main-title();
+            text-align: center;
+        }
+        div {
+            max-width: 564px;
+            height: 81px;
+            text-align: center;
+        }
+        button {
+            appearance: none;
+            width: 284px;
+            height: 78px;
+            background-color: #FFFFFF;
+            color: #0D4266;
+            font-weight: 600;
+            border-radius: 10px;
+            border: 0px;
+            cursor: pointer;
+        }
+    }
+    .right-side {
+        @include under-header-default-position(190px);
+        align-items: flex-end;
+        .right-dog {
+            @include under-header-images('../../../assets/svg/under-header-right-dog.svg', 10vw, 9vw);
+        }
+        .right-bottom-elements {
+            display: flex;
+            gap: 37px;
+            .right-cat {
+                @include under-header-images('../../../assets/svg/under-header-right-cat.svg', 11.8vw, 11.2vw);
+            }
+            .right-paws {
+                @include under-header-images('../../../assets/svg/under-header-right-paws.svg', 4.3vw, 6vw);
+            }
+        }
+    }
+}
+

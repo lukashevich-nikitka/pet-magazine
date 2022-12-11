@@ -4,13 +4,15 @@
     box-sizing: border-box;
 }
 
-@mixin default-maket-settings($background-color: #0D4266) {
+@mixin default-maket-settings($background-color: #0D4266, $color: #FFFFFF) {
     max-width: 1920px;
     padding-left: 7.3vw;
     padding-right: 7.3vw;
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     font-weight: 500;
-    color: #FFFFFF;
+    line-height: 27px;
+    color: $color;
     background-color: $background-color;
 }
 
@@ -19,6 +21,7 @@
     gap: $gap;
     white-space: nowrap;
     list-style-type: none;
+
     li {
         a {
             color: #FFFFFF;
@@ -33,4 +36,39 @@
     height: 27px;
     width: 27px;
     background-size: contain;
+}
+
+@mixin under-header-default-position($gap: 180px) {
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px;
+    gap: $gap;
+    height: 759px;
+}
+
+@mixin main-title($font-size: 58px, $font-weight: 700, $line-height: 75.4px, $color: #FFFFFF) {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $line-height;
+    color: $color;
+}
+
+@mixin under-header-images($background-image: '../../../assets/svg/under-header-lines.svg', $width: 4.7vw, $height: 3.3vw) {
+    background-image: url($background-image);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: $width;
+    height: $height;
+}
+
+@mixin buttons-settings($height: 78px, $width: 284px, $background-color: #FFFFFF, $color: #0D4266, $border-radius: 10px, $border: 0px) {
+    appearance: none;
+    width: $width;
+    height: $height;
+    background-color: $background-color;
+    color: $color;
+    border-radius: $border-radius;
+    border: $border;
+    cursor: pointer;
 }

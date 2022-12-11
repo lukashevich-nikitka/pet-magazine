@@ -1,0 +1,59 @@
+@import '../../../mixins.scss';
+
+.product-card {
+    padding: 30px 21px 30px 21px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 313px;
+    height: 470px;
+    .product-view-part {
+        display: flex;
+        flex-direction: column;
+        height: 250px;
+        width: 100%;
+        div {
+            height: 170px;
+            width: 100%;
+            img {
+                display: block;
+                margin: 0 auto;
+            }
+        }
+    }
+    .product-icons {
+        position: absolute;
+        display: flex;
+        flex-direction: column ;
+        width: fit-content;
+        height: fit-content;
+        gap: 14px;
+        right: 30px;
+        .favourite-icon {
+            @include navigation-buyer-icon-settings('../../../../assets/svg/favourite-heart-icon.svg');
+        }
+        .rate-icon {
+            @include navigation-buyer-icon-settings('../../../../assets/svg/product-card-rate.svg');
+        }
+    }
+    .buyer-view-part {
+        .product-info {
+            display: flex;
+            justify-content: space-between;
+        }
+        button {
+            @include buttons-settings(55px, 271px, #0D4266, #FFFFFF, 10px, 0px);
+            div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 9px;
+                font-size: 18px;
+                div {
+                    @include navigation-buyer-icon-settings('../../../../assets/svg/header-basket.svg');
+                }
+            }
+        }
+    }
+}
