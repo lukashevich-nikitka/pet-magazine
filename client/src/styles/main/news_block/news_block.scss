@@ -1,0 +1,42 @@
+@import '../../mixins.scss';
+
+* {
+  @include default-settings;
+}
+
+.news-block-container {
+    @include default-maket-settings(#FFFFFF, #292929);
+    min-height: 690px;
+    max-height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    h2 {
+        font-size: 45px;
+        line-height: 58.5px;
+      }
+    .slider {
+        width: 100%;
+        height: 500px;
+        overflow: hidden;
+        .news-container {
+            height: 100%;
+            display: flex;
+            transition: 1s;
+        }
+    }
+    .slider-controller {
+        .slider-arrows {
+            display: flex;
+            gap: 15px;
+            .left-arrow {
+                @include navigation-buyer-icon-settings('../../../assets/svg/left-slider-arrow.svg', 27px, 33px);
+                cursor: pointer;
+            }
+            .right-arrow {
+                @include navigation-buyer-icon-settings('../../../assets/svg/right-slider-arrow.svg', 27px, 33px);
+                cursor: pointer;
+            }
+        }
+    }
+}

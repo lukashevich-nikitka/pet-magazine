@@ -6,7 +6,8 @@
 
 .recommend-container {
   @include default-maket-settings(#FFFFFF, #292929);
-  height: 883px;
+  min-height: 883px;
+  max-height: fit-content;
   display: flex;
   flex-direction: column;
   gap: 60px;

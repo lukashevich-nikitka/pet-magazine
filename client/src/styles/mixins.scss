@@ -30,11 +30,11 @@
     }
 }
 
-@mixin navigation-buyer-icon-settings($icon: '../../../../assets/svg/header-favourite.svg') {
+@mixin navigation-buyer-icon-settings($icon: '../../../../assets/svg/header-favourite.svg', $height: 27px, $width: 27px) {
     background-image: url($icon);
     background-repeat: no-repeat;
-    height: 27px;
-    width: 27px;
+    height: $height;
+    width: $width;
     background-size: contain;
 }
 
