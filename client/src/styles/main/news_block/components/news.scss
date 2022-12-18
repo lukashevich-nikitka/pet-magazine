@@ -1,9 +1,46 @@
+@import '../../../mixins.scss';
 
-
-.rectangle {
+.background {
+    display: flex;
+    align-items: center;
     height: 100%;
     min-width: 100%;
     max-width: 100%;
-    background-color: aquamarine;
-    border: 2px solid blue;
+    background-color: #FFFFFF;
+    .dog-image {
+        @include navigation-buyer-icon-settings('../../../../assets/svg/news_dog.svg', 33vw, 40vw);
+        position: absolute;
+        right: 3.4%;
+        bottom: 10%;
+    }
+    .second-background {
+        display: flex;
+        align-items: center;
+        padding: 0px 7.3vw 0px 7.3vw;
+        background-color: #0D4266;
+        color: #FFFFFF;
+        width: 100%;
+        min-height: 500px;
+        max-height: fit-content;
+        .news-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 305px;
+            height: fit-content;
+            h1 {
+                @include main-title();
+            }
+            button {
+                max-width: 227px;
+                height: 64px;
+                font-size: 20px;
+                background-color: transparent;
+                border: 2px solid #FFFFFF;
+                border-radius: 10px;
+                color: #FFFFFF;
+                cursor: pointer;
+            }
+        }
+    }
 }

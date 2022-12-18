@@ -6,15 +6,12 @@ import '../../../styles/main/news_block/news_block.scss';
 
 const NewsBlock: React.FC = function () {
   const [ofset, setOfset] = useState<number>(0);
-  const margins: number = 0.146;
   const webSiteInnerWidth: number = window.innerWidth;
   const rightOfset: () => void = () => {
-    setOfset(ofset - webSiteInnerWidth + webSiteInnerWidth * margins);
+    setOfset(ofset - webSiteInnerWidth);
   };
   const leftOfset: () => void = () => {
-    (ofset !== 0)
-      ? setOfset(ofset + webSiteInnerWidth - webSiteInnerWidth * margins)
-      : setOfset(0);
+    setOfset(ofset + webSiteInnerWidth);
   };
   return (
     <div className="news-block-container">

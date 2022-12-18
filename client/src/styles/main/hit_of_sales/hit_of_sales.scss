@@ -4,7 +4,7 @@
   @include default-settings;
 }
 
-.recommend-container {
+.hit-of-sales-container {
   @include default-maket-settings(#FFFFFF, #292929);
   min-height: 883px;
   max-height: fit-content;

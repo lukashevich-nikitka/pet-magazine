@@ -1,12 +1,12 @@
 import React from 'react';
-import '../../../styles/main/recommend/recommend.scss';
+import '../../../styles/main/hit_of_sales/hit_of_sales.scss';
 import ProductCard from '../../common_components/product_card';
 
-const Recommend: React.FC = function () {
+const HitOfSales: React.FC = function () {
   return (
-    <div className="recommend-container">
+    <div className="hit-of-sales-container">
       <div className="title-area">
-        <h2>Рекомендуем для Вас</h2>
+        <h2>Хиты Продаж</h2>
         <button type="submit">Смотреть все</button>
       </div>
       <div className="card-wrapper">
@@ -16,4 +16,4 @@ const Recommend: React.FC = function () {
   );
 };
 
-export default Recommend;
+export default HitOfSales;

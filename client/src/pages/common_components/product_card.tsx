@@ -1,12 +1,12 @@
 /* eslint-disable global-require */
 import React from 'react';
-import '../../../../styles/main/recommend/components/product_card.scss';
+import '../../styles/common_components/product_card.scss';
 
 const ProductCard: React.FC = function () {
   return (
     <div className="product-card">
       <div className="product-view-part">
-        <div><img src={require('../../../../assets/images/cat-litter.jpg')} alt="product" /></div>
+        <div><img src={require('../../assets/images/cat-litter.jpg')} alt="product" /></div>
         <span>Наполнитель для кошачьего туалета впитывающий</span>
       </div>
       <div className="product-icons">

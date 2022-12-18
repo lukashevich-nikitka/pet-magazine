@@ -1,4 +1,4 @@
-@import '../../../mixins.scss';
+@import '../mixins.scss';
 
 .product-card {
     padding: 30px 21px 30px 21px;
@@ -31,10 +31,10 @@
         gap: 14px;
         right: 30px;
         .favourite-icon {
-            @include navigation-buyer-icon-settings('../../../../assets/svg/favourite-heart-icon.svg');
+            @include navigation-buyer-icon-settings('../assets/svg/favourite-heart-icon.svg');
         }
         .rate-icon {
-            @include navigation-buyer-icon-settings('../../../../assets/svg/product-card-rate.svg');
+            @include navigation-buyer-icon-settings('../assets/svg/product-card-rate.svg');
         }
     }
     .buyer-view-part {
@@ -51,7 +51,7 @@
                 gap: 9px;
                 font-size: 18px;
                 div {
-                    @include navigation-buyer-icon-settings('../../../../assets/svg/header-basket.svg');
+                    @include navigation-buyer-icon-settings('../assets/svg/header-basket.svg');
                 }
             }
         }

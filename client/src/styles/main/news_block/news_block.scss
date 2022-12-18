@@ -1,5 +1,9 @@
 @import '../../mixins.scss';
 
+body {
+    overflow-x: hidden;
+}
+
 * {
   @include default-settings;
 }
@@ -16,8 +20,10 @@
         line-height: 58.5px;
       }
     .slider {
-        width: 100%;
-        height: 500px;
+        position: relative;
+        width: 100vw;
+        left: -7.3vw;
+        height: 40vw;
         overflow: hidden;
         .news-container {
             height: 100%;
