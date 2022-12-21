@@ -1,0 +1,12 @@
+@import '../../mixins.scss';
+
+* {
+    @include default-settings;
+}
+
+.footer-container {
+    @include default-maket-settings(#FFFFFF, #292929);
+    .paws-footer {
+        background-image: url('../../../assets/svg/paws-footer.svg');
+    }
+}
