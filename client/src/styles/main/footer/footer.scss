@@ -6,7 +6,50 @@
 
 .footer-container {
     @include default-maket-settings(#FFFFFF, #292929);
+    min-height: 220px;
+    max-height: fit-content;
+    padding-bottom: 53px;
+    padding-top: 11vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     .paws-footer {
-        background-image: url('../../../assets/svg/paws-footer.svg');
+        @include navigation-buyer-icon-settings('../../../assets/svg/paws-footer.svg', 61px, 166px);
+        justify-self: center;
+    }
+    .delivery-block {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .social-networks-block {
+        display: flex;
+        justify-content: space-between;
+        width: 97px;
+        .instagram {
+            @include navigation-buyer-icon-settings('../../../assets/svg/IG.svg', 24px, 18px);
+        }
+        .facebook {
+            @include navigation-buyer-icon-settings('../../../assets/svg/FB.svg', 24px, 22px);
+        }
+        .vk {
+            @include navigation-buyer-icon-settings('../../../assets/svg/VK.svg', 24px, 25px);
+        }
+    }
+    .contacts-block {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .contacts {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .privacy-policy {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
     }
 }

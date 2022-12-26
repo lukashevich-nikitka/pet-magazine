@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../assets/svg/paws-footer.scss';
+import '../../../styles/main/footer/footer.scss';
 
 const Footer: React.FC = function () {
   return (
