@@ -16,15 +16,14 @@
     background-color: $background-color;
 }
 
-@mixin navigation-list-settings($gap: 24px) {
+@mixin navigation-list-settings($gap: 24px, $color: #FFFFFF) {
     display: flex;
     gap: $gap;
     white-space: nowrap;
     list-style-type: none;
-
     li {
         a {
-            color: #FFFFFF;
+            color: $color;
             text-decoration: none;
         }
     }

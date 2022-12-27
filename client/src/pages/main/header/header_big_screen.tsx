@@ -4,7 +4,7 @@ import BuyerNavigation from './components/buyer_navigation';
 import InfoNavigation from './components/info_navigation';
 import '../../../styles/main/header/header.scss';
 
-const Header: React.FC = function () {
+const HeaderBigSceen: React.FC = function () {
   return (
     <header className="header-container">
       <PagesNavigation />
@@ -17,4 +17,4 @@ const Header: React.FC = function () {
   );
 };
 
-export default Header;
+export default HeaderBigSceen;

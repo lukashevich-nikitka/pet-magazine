@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './main/header/header';
+import HeaderController from './main/header/header_controller';
 import UnderHeader from './main/under_header_block/under_header';
 import Recommend from './main/recommend/recommend';
 import NewsBlock from './main/news/news_block';
@@ -10,7 +10,7 @@ import Footer from './main/footer/footer';
 const Main: React.FC = function () {
   return (
     <>
-      <Header />
+      <HeaderController />
       <main>
         <UnderHeader />
         <Recommend />
