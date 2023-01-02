@@ -1,0 +1,17 @@
+@import '../mixins.scss';
+
+.registration-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 70vh;
+    width: 40vw;
+    border: 10px solid #0D4266;
+    padding: 10px 50px 50px 50px;
+    border-radius: 5px;
+    margin: 7.5vh auto 0 auto;
+    h1 {
+        @include main-title(_, 700, _, grey);
+        text-align: center;
+    }
+}
