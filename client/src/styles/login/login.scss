@@ -1,15 +1,29 @@
 @import '../mixins.scss';
 
-.registration-form-wrapper {
+.login-page-container {
+    font-family: 'Montserrat', sans-serif;
+    color: grey;
+    position: relative;
+    height: fit-content;
+    width: 40vw;
+    margin: 7.5vh auto 0 auto;
+    span {
+        position: absolute;
+        max-width: fit-content;
+        right: 60px;
+        left: 60px;
+        bottom: 2vh;
+    }
+}
+
+.login-form-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 70vh;
-    width: 40vw;
+    justify-content: space-around;
+    height: 60vh;
     border: 10px solid #0D4266;
-    padding: 10px 50px 50px 50px;
+    padding: 0px 50px 0px 50px;
     border-radius: 5px;
-    margin: 7.5vh auto 0 auto;
     h1 {
         @include main-title(_, 700, _, grey);
         text-align: center;

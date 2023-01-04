@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import Registration from './pages/registration/registration';
+import Login from './pages/login/login';
 // import Main from './pages/main';
 
 const root = ReactDOM.createRoot(
@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Registration />
+      <Login />
     </BrowserRouter>
   </React.StrictMode>,
 );

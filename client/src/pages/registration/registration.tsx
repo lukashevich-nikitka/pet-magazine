@@ -11,6 +11,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import IconButton from '@mui/material/IconButton';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Button from '@mui/material/Button';
 import '../../styles/registration/registration.scss';
 
 const Registration: React.FC = function ComposedTextField() {
@@ -117,6 +118,7 @@ const Registration: React.FC = function ComposedTextField() {
           {ageRange.map((_, index) => <MenuItem value={index + 1}>{index + 1}</MenuItem>)}
         </Select>
       </FormControl>
+      <Button variant="outlined">Login</Button>
     </Box>
   );
 };
