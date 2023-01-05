@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
-import Box from '@mui/material/Box';
-import FormControl from '@mui/material/FormControl';
-import FormHelperText from '@mui/material/FormHelperText';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import IconButton from '@mui/material/IconButton';
-import MenuItem from '@mui/material/MenuItem';
+import {
+  Box, FormControl, FormHelperText, Input, InputLabel, InputAdornment, IconButton, MenuItem, Button,
+} from '@mui/material';
+import { AccountCircle, Visibility, VisibilityOff } from '@mui/icons-material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import Button from '@mui/material/Button';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { useAppDispatch } from '../../types/redux-hooks';
 import '../../styles/registration/registration.scss';
+import registrationThunks from '../../store/registration/registration_thunks';
+import { IFormValues } from '../../types/interfaces';
 
 const Registration: React.FC = function ComposedTextField() {
+  const { registrNewUser } = registrationThunks;
+  const { register, handleSubmit } = useForm<IFormValues>();
+  const dispatch = useAppDispatch();
+  const onSubmit: SubmitHandler<IFormValues> = (data) => dispatch(registrNewUser(data));
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [age, setAge] = React.useState('');
   const handleClickShowPassword: () => void = () => setShowPassword((show) => !show);
@@ -27,6 +27,7 @@ const Registration: React.FC = function ComposedTextField() {
   const ageRange: Array<number> = Array(100).fill(1);
   return (
     <Box
+      onSubmit={handleSubmit(onSubmit)}
       className="registration-form-wrapper"
       component="form"
       autoComplete="off"
@@ -35,6 +36,7 @@ const Registration: React.FC = function ComposedTextField() {
       <FormControl variant="standard">
         <InputLabel htmlFor="component-simple">Name</InputLabel>
         <Input
+          {...register('firstName')}
           id="component-simple"
           startAdornment={(
             <InputAdornment position="start">
@@ -46,6 +48,7 @@ const Registration: React.FC = function ComposedTextField() {
       <FormControl variant="standard">
         <InputLabel htmlFor="component-simple">Last name</InputLabel>
         <Input
+          {...register('lastName')}
           id="component-simple"
           startAdornment={(
             <InputAdornment position="start">
@@ -58,6 +61,8 @@ const Registration: React.FC = function ComposedTextField() {
         <InputLabel htmlFor="component-simple">Email</InputLabel>
         <Input
           id="component-simple"
+          type="email"
+          {...register('email')}
         />
       </FormControl>
       <FormControl variant="standard">
@@ -73,6 +78,7 @@ const Registration: React.FC = function ComposedTextField() {
                 onClick={handleClickShowPassword}
                 onMouseDown={handleMouseDownPassword}
                 edge="end"
+                {...register('password')}
               >
                 {showPassword ? <VisibilityOff /> : <Visibility />}
               </IconButton>
@@ -89,6 +95,7 @@ const Registration: React.FC = function ComposedTextField() {
           id="component-helper"
           aria-describedby="component-helper-text"
           type={showPassword ? 'text' : 'password'}
+          {...register('password')}
           endAdornment={(
             <InputAdornment position="end">
               <IconButton
@@ -109,6 +116,7 @@ const Registration: React.FC = function ComposedTextField() {
       <FormControl variant="standard">
         <InputLabel id="demo-simple-select-standard-label">Age</InputLabel>
         <Select
+          {...register('age')}
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
           value={age}
@@ -118,7 +126,7 @@ const Registration: React.FC = function ComposedTextField() {
           {ageRange.map((_, index) => <MenuItem value={index + 1}>{index + 1}</MenuItem>)}
         </Select>
       </FormControl>
-      <Button variant="outlined">Login</Button>
+      <Button type="submit" variant="outlined">Register</Button>
     </Box>
   );
 };

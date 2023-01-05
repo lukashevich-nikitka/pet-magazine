@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import Login from './pages/login/login';
+import { Provider } from 'react-redux';
+import store from './store/store';
+import Registration from './pages/registration/registration';
 // import Main from './pages/main';
 
 const root = ReactDOM.createRoot(
@@ -10,7 +12,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Login />
+      <Provider store={store}>
+        <Registration />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>,
 );
