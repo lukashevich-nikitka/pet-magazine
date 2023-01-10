@@ -1,14 +1,14 @@
 import * as mongoDB from "mongodb";
 import * as dotenv from "dotenv";
 
-export const collections: { petshop?: mongoDB.Collection } = {}
+const client: mongoDB.MongoClient = new mongoDB.MongoClient(
+  'mongodb+srv://Nikita:Gtnhjcjdbx1@cluster0.xqm1uuh.mongodb.net/users'
+);
+
+export const usersCollection: mongoDB.Collection = client.db().collection('users');
 
 export async function connectToDatabase() {
   dotenv.config();
-
-  const client: mongoDB.MongoClient = new mongoDB.MongoClient(
-    'mongodb+srv://Nikita:Gtnhjcjdbx1@cluster0.xqm1uuh.mongodb.net/petshop'
-  );
 
   const db: mongoDB.Db = client.db(process.env.DB_NAME);
 

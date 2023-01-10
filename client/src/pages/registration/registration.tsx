@@ -71,6 +71,7 @@ const Registration: React.FC = function ComposedTextField() {
           id="component-helper"
           aria-describedby="component-helper-text"
           type={showPassword ? 'text' : 'password'}
+          {...register('password')}
           endAdornment={(
             <InputAdornment position="end">
               <IconButton
@@ -95,7 +96,7 @@ const Registration: React.FC = function ComposedTextField() {
           id="component-helper"
           aria-describedby="component-helper-text"
           type={showPassword ? 'text' : 'password'}
-          {...register('password')}
+          {...register('repeatPassword')}
           endAdornment={(
             <InputAdornment position="end">
               <IconButton

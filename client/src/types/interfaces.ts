@@ -5,6 +5,7 @@ interface IFormValues {
   lastName: string;
   email: string;
   password: string;
+  repeatPassword: string;
   age: number;
 }
 
