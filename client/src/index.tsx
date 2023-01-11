@@ -3,18 +3,17 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store/store';
-import Registration from './pages/registration/registration';
-// import Main from './pages/main';
+import RoutesComponent from './pages/routes';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <Registration />
-      </Provider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <RoutesComponent />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
 );

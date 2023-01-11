@@ -10,11 +10,14 @@ import '../../styles/registration/registration.scss';
 import registrationThunks from '../../store/registration/registration_thunks';
 import { IFormValues } from '../../types/interfaces';
 
-const Registration: React.FC = function ComposedTextField() {
+const Registration: React.FC = function () {
   const { registrNewUser } = registrationThunks;
-  const { register, handleSubmit } = useForm<IFormValues>();
+  const { register, handleSubmit, reset } = useForm<IFormValues>({ shouldUseNativeValidation: true });
   const dispatch = useAppDispatch();
-  const onSubmit: SubmitHandler<IFormValues> = (data) => dispatch(registrNewUser(data));
+  const onSubmit: SubmitHandler<IFormValues> = (data) => {
+    dispatch(registrNewUser(data));
+    reset();
+  };
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [age, setAge] = React.useState('');
   const handleClickShowPassword: () => void = () => setShowPassword((show) => !show);
@@ -34,10 +37,10 @@ const Registration: React.FC = function ComposedTextField() {
     >
       <h1>Registration</h1>
       <FormControl variant="standard">
-        <InputLabel htmlFor="component-simple">Name</InputLabel>
+        <InputLabel htmlFor="component-name">Name</InputLabel>
         <Input
-          {...register('firstName')}
-          id="component-simple"
+          {...register('firstName', { required: "Please enter your first name." })}
+          id="component-name"
           startAdornment={(
             <InputAdornment position="start">
               <AccountCircle />
@@ -46,10 +49,10 @@ const Registration: React.FC = function ComposedTextField() {
         />
       </FormControl>
       <FormControl variant="standard">
-        <InputLabel htmlFor="component-simple">Last name</InputLabel>
+        <InputLabel htmlFor="component-last-name">Last name</InputLabel>
         <Input
-          {...register('lastName')}
-          id="component-simple"
+          {...register('lastName', { required: "Please enter your last name." })}
+          id="component-last-name"
           startAdornment={(
             <InputAdornment position="start">
               <AccountCircle />
@@ -58,20 +61,20 @@ const Registration: React.FC = function ComposedTextField() {
         />
       </FormControl>
       <FormControl variant="standard">
-        <InputLabel htmlFor="component-simple">Email</InputLabel>
+        <InputLabel htmlFor="component-email">Email</InputLabel>
         <Input
-          id="component-simple"
+          id="component-email"
           type="email"
           {...register('email')}
         />
       </FormControl>
       <FormControl variant="standard">
-        <InputLabel htmlFor="component-helper">Password</InputLabel>
+        <InputLabel htmlFor="component-password">Password</InputLabel>
         <Input
-          id="component-helper"
+          id="component-password"
           aria-describedby="component-helper-text"
           type={showPassword ? 'text' : 'password'}
-          {...register('password')}
+          {...register('password', { required: true, minLength: 8 })}
           endAdornment={(
             <InputAdornment position="end">
               <IconButton
@@ -91,12 +94,12 @@ const Registration: React.FC = function ComposedTextField() {
         </FormHelperText>
       </FormControl>
       <FormControl variant="standard">
-        <InputLabel htmlFor="component-helper">Password</InputLabel>
+        <InputLabel htmlFor="component-second-password">Password</InputLabel>
         <Input
-          id="component-helper"
+          id="component-second-password"
           aria-describedby="component-helper-text"
           type={showPassword ? 'text' : 'password'}
-          {...register('repeatPassword')}
+          {...register('repeatPassword', { required: true, minLength: 8 })}
           endAdornment={(
             <InputAdornment position="end">
               <IconButton
@@ -117,7 +120,7 @@ const Registration: React.FC = function ComposedTextField() {
       <FormControl variant="standard">
         <InputLabel id="demo-simple-select-standard-label">Age</InputLabel>
         <Select
-          {...register('age')}
+          {...register('age', { required: "Please enter your age." })}
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
           value={age}

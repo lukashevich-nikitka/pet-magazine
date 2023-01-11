@@ -17,7 +17,7 @@ const { registrNewUser } = registrationThunks;
 const registrationReducer = createReducer(initialState, {
   [registrNewUser.fulfilled.type]: (
     state,
-    action: PayloadAction<IRegistrationState>
+    action: PayloadAction<IRegistrationState>,
   ) => {
     state.name = action.payload.name;
     state.surname = action.payload.surname;
