@@ -9,4 +9,9 @@ interface IFormValues {
   age: number;
 }
 
-export type { IFormValues };
+interface IAuthValue {
+  email: string;
+  password: string;
+}
+
+export type { IFormValues, IAuthValue };

@@ -1,15 +1,26 @@
+import { ObjectId } from 'mongodb';
+
 interface IUser {
   firstName: string;
   lastName: string;
   email: string;
   password: string;
   age: number;
+  role: string;
 }
 
 interface IRegistrationAnswer {
-  name: string,
-  surname: string,
+  firstName: string,
+  lastName: string,
   registrationAnswer: string,
 }
 
-export type { IUser, IRegistrationAnswer }
+interface IJWTObject {
+  id: ObjectId,
+  firstName: string,
+  lastName: string,
+  age: number,
+  role: string,
+}
+
+export type { IUser, IRegistrationAnswer, IJWTObject}

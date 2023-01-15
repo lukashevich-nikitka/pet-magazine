@@ -12,7 +12,9 @@ import { IFormValues } from '../../types/interfaces';
 
 const Registration: React.FC = function () {
   const { registrNewUser } = registrationThunks;
-  const { register, handleSubmit, reset } = useForm<IFormValues>({ shouldUseNativeValidation: true });
+  const {
+    register, handleSubmit, reset,
+  } = useForm<IFormValues>({ shouldUseNativeValidation: true });
   const dispatch = useAppDispatch();
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
     dispatch(registrNewUser(data));
@@ -39,7 +41,7 @@ const Registration: React.FC = function () {
       <FormControl variant="standard">
         <InputLabel htmlFor="component-name">Name</InputLabel>
         <Input
-          {...register('firstName', { required: "Please enter your first name." })}
+          {...register('firstName', { required: 'Please enter your first name.' })}
           id="component-name"
           startAdornment={(
             <InputAdornment position="start">
@@ -51,7 +53,7 @@ const Registration: React.FC = function () {
       <FormControl variant="standard">
         <InputLabel htmlFor="component-last-name">Last name</InputLabel>
         <Input
-          {...register('lastName', { required: "Please enter your last name." })}
+          {...register('lastName', { required: 'Please enter your last name.' })}
           id="component-last-name"
           startAdornment={(
             <InputAdornment position="start">
@@ -120,7 +122,7 @@ const Registration: React.FC = function () {
       <FormControl variant="standard">
         <InputLabel id="demo-simple-select-standard-label">Age</InputLabel>
         <Select
-          {...register('age', { required: "Please enter your age." })}
+          {...register('age', { required: 'Please enter your age.' })}
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
           value={age}

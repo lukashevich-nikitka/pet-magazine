@@ -1,25 +1,33 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import Box from '@mui/material/Box';
-import FormControl from '@mui/material/FormControl';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import IconButton from '@mui/material/IconButton';
-import Button from '@mui/material/Button';
+import {
+  Box, FormControl, Input, InputLabel, InputAdornment, Button, IconButton,
+} from '@mui/material';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { useAppDispatch } from '../../types/redux-hooks';
+import authThunks from '../../store/auth/auth_thunks';
+import { IAuthValue } from '../../types/interfaces';
 import '../../styles/login/login.scss';
 
-const Login: React.FC = function ComposedTextField() {
+const Auth: React.FC = function ComposedTextField() {
+  const { auth } = authThunks;
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const {
+    register, handleSubmit,
+  } = useForm<IAuthValue>({ shouldUseNativeValidation: true });
   const handleClickShowPassword: () => void = () => setShowPassword((show) => !show);
   const handleMouseDownPassword: (event: React.MouseEvent<HTMLButtonElement>) => void = (event) => {
     event.preventDefault();
   };
+  const dispatch = useAppDispatch();
+  const onSubmit: SubmitHandler<IAuthValue> = (data) => {
+    dispatch(auth(data));
+  };
   return (
     <div className="login-page-container">
       <Box
+        onSubmit={handleSubmit(onSubmit)}
         className="login-form-wrapper"
         component="form"
         autoComplete="off"
@@ -29,11 +37,14 @@ const Login: React.FC = function ComposedTextField() {
           <InputLabel htmlFor="component-simple">Email</InputLabel>
           <Input
             id="component-simple"
+            type="email"
+            {...register('email', { required: 'Please enter your email.' })}
           />
         </FormControl>
         <FormControl variant="standard">
           <InputLabel htmlFor="component-helper">Password</InputLabel>
           <Input
+            {...register('password', { required: 'Please enter your password.' })}
             id="component-helper"
             aria-describedby="component-helper-text"
             type={showPassword ? 'text' : 'password'}
@@ -51,7 +62,7 @@ const Login: React.FC = function ComposedTextField() {
                   )}
           />
         </FormControl>
-        <Button variant="outlined">Login</Button>
+        <Button type="submit" variant="outlined">Login</Button>
       </Box>
       <span>
         {'If you do not have an account, please '}
@@ -62,4 +73,4 @@ const Login: React.FC = function ComposedTextField() {
   );
 };
 
-export default Login;
+export default Auth;

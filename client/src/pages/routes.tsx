@@ -1,14 +1,15 @@
 /* eslint-disable import/no-cycle */
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Login from './login/login';
+import Auth from './auth/auth';
 import Main from './main';
 import Registration from './registration/registration';
+
 const RoutesComponent: React.FC = function () {
   return (
     <Routes>
       <Route path="/" element={<Main />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/auth" element={<Auth />} />
       <Route path="/registration" element={<Registration />} />
       <Route path="/cats" element={<Main />} />
       <Route path="/dogs" element={<Main />} />

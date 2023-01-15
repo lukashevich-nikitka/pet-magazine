@@ -1,8 +1,11 @@
 import { Router, Request, Response } from 'express';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import { MongoServerError } from 'mongodb';
 import { usersCollection } from '../services/servicesdb';
-import { IUser, IRegistrationAnswer } from '../types/interfaces';
+import { IUser, IRegistrationAnswer, IJWTObject } from '../types/interfaces';
+// import passport from 'passport';
+// import { StrategyOptions } from 'passport-jwt';
 
 const router: Router = Router();
 
@@ -20,10 +23,11 @@ router.post('/registration', async (req: Request, res: Response) => {
                         email: email,
                         password: hash,
                         age: age,
+                        role: 'user',
                     };
                     const registrationAnswer: IRegistrationAnswer = {
-                        name: firstName,
-                        surname: lastName,
+                        firstName: firstName,
+                        lastName: lastName,
                         registrationAnswer: 'User successfully registered.',
                     };
                     await usersCollection.insertOne(newUser),
@@ -41,5 +45,35 @@ router.post('/registration', async (req: Request, res: Response) => {
         res.status(400).send('Passwords must match.');
     }
 });
+
+router.post('auth', async (req: Request, res: Response) => {
+    const { email, password } = req.body;
+    const user = await usersCollection.findOne({ email: email })
+    if (user) {
+        try {
+            bcrypt.compare(password, user.passwprd, function (err, result) {
+                if (err) {
+                    console.log(err)
+                } else {
+                    const jwtPayload: IJWTObject = {
+                        id: user._id,
+                        firstName: user.firstName,
+                        lastName: user.lastName,
+                        age: user.age,
+                        role: user.role,
+                    }
+                    const token = jwt.sign(jwtPayload, 'petshop');
+                    result
+                        ? res.status(201).set('Autharization', token)
+                        : res.status(400).send('Hacking attempt')
+                }
+            })
+        } catch (error) {
+
+        }
+    } else {
+        res.status(400).send('No user with such email');
+    }
+})
 
 module.exports = router;
