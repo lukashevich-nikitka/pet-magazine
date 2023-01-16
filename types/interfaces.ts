@@ -23,4 +23,10 @@ interface IJWTObject {
   role: string,
 }
 
-export type { IUser, IRegistrationAnswer, IJWTObject}
+interface IAuthAnswer {
+  firstName: string,
+  lastName: string,
+  token: string,
+}
+
+export type { IUser, IRegistrationAnswer, IJWTObject, IAuthAnswer }

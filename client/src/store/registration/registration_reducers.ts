@@ -3,13 +3,13 @@ import { createReducer, PayloadAction } from '@reduxjs/toolkit';
 import registrationThunks from './registration_thunks';
 
 interface IRegistrationState {
-  name: string | null;
-  surname: string | null;
+  firstName: string | null;
+  lastName: string | null;
 }
 
 const initialState: IRegistrationState = {
-  name: null,
-  surname: null,
+  firstName: null,
+  lastName: null,
 };
 
 const { registrNewUser } = registrationThunks;
@@ -19,8 +19,8 @@ const registrationReducer = createReducer(initialState, {
     state,
     action: PayloadAction<IRegistrationState>,
   ) => {
-    state.name = action.payload.name;
-    state.surname = action.payload.surname;
+    state.firstName = action.payload.firstName;
+    state.lastName = action.payload.lastName;
   },
 });
 

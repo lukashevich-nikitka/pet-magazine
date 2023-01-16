@@ -5,7 +5,8 @@ import {
 import { AccountCircle, Visibility, VisibilityOff } from '@mui/icons-material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { useAppDispatch } from '../../types/redux-hooks';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../types/redux-hooks';
 import '../../styles/registration/registration.scss';
 import registrationThunks from '../../store/registration/registration_thunks';
 import { IFormValues } from '../../types/interfaces';
@@ -15,13 +16,15 @@ const Registration: React.FC = function () {
   const {
     register, handleSubmit, reset,
   } = useForm<IFormValues>({ shouldUseNativeValidation: true });
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
     dispatch(registrNewUser(data));
+    navigate('/auth');
     reset();
   };
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [age, setAge] = React.useState('');
+  const [age, setAge] = useState<string>('');
   const handleClickShowPassword: () => void = () => setShowPassword((show) => !show);
   const handleMouseDownPassword: (event: React.MouseEvent<HTMLButtonElement>) => void = (event) => {
     event.preventDefault();
