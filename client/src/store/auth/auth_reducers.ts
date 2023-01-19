@@ -3,13 +3,13 @@ import { createReducer, PayloadAction } from '@reduxjs/toolkit';
 import authThunks from './auth_thunks';
 
 interface IAuthState {
-  firstName: string | null;
-  lastName: string | null;
+  success: boolean | null;
+  message: string | null;
 }
 
 const initialState: IAuthState = {
-  firstName: null,
-  lastName: null,
+  success: null,
+  message: null,
 };
 
 const { auth } = authThunks;
@@ -19,8 +19,8 @@ const authReducer = createReducer(initialState, {
     state,
     action: PayloadAction<IAuthState>,
   ) => {
-    state.firstName = action.payload.firstName;
-    state.lastName = action.payload.lastName;
+    state.success = action.payload.success;
+    state.message = action.payload.message;
   },
 });
 

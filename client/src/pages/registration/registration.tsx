@@ -6,7 +6,7 @@ import { AccountCircle, Visibility, VisibilityOff } from '@mui/icons-material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../types/redux-hooks';
+import { useAppDispatch } from '../../types/redux-hooks';
 import '../../styles/registration/registration.scss';
 import registrationThunks from '../../store/registration/registration_thunks';
 import { IFormValues } from '../../types/interfaces';
@@ -19,9 +19,9 @@ const Registration: React.FC = function () {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
-    dispatch(registrNewUser(data));
-    navigate('/auth');
-    reset();
+    dispatch(registrNewUser(data)).then((res) => {
+      res.payload ? navigate('/auth') : reset();
+    });
   };
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [age, setAge] = useState<string>('');
@@ -50,7 +50,7 @@ const Registration: React.FC = function () {
             <InputAdornment position="start">
               <AccountCircle />
             </InputAdornment>
-                  )}
+          )}
         />
       </FormControl>
       <FormControl variant="standard">
@@ -62,7 +62,7 @@ const Registration: React.FC = function () {
             <InputAdornment position="start">
               <AccountCircle />
             </InputAdornment>
-                  )}
+          )}
         />
       </FormControl>
       <FormControl variant="standard">
@@ -92,7 +92,7 @@ const Registration: React.FC = function () {
                 {showPassword ? <VisibilityOff /> : <Visibility />}
               </IconButton>
             </InputAdornment>
-                  )}
+          )}
         />
         <FormHelperText id="component-helper-text">
           Password must include at least 8 characters
@@ -116,7 +116,7 @@ const Registration: React.FC = function () {
                 {showPassword ? <VisibilityOff /> : <Visibility />}
               </IconButton>
             </InputAdornment>
-                  )}
+          )}
         />
         <FormHelperText id="component-helper-text">
           Repeat the entered password

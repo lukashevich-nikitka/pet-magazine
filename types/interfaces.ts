@@ -10,9 +10,8 @@ interface IUser {
 }
 
 interface IRegistrationAnswer {
-  firstName: string,
-  lastName: string,
-  registrationAnswer: string,
+  success: boolean,
+  message: string,
 }
 
 interface IJWTObject {
@@ -24,8 +23,8 @@ interface IJWTObject {
 }
 
 interface IAuthAnswer {
-  firstName: string,
-  lastName: string,
+  success: boolean,
+  message: string,
   token: string,
 }
 
