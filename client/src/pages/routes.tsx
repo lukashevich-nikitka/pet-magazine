@@ -3,6 +3,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Auth from './auth/auth';
 import Main from './main';
+import Profile from './profile/profile';
 import Registration from './registration/registration';
 
 const RoutesComponent: React.FC = function () {
@@ -17,6 +18,7 @@ const RoutesComponent: React.FC = function () {
       <Route path="/pharmacy" element={<Main />} />
       <Route path="/shops" element={<Main />} />
       <Route path="/favourites" element={<Main />} />
+      <Route path="/profile" element={<Profile />} />
       <Route path="/search" element={<Main />} />
       <Route path="/basket" element={<Main />} />
     </Routes>

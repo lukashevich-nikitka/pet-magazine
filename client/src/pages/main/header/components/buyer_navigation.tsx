@@ -13,7 +13,7 @@ const BuyerNavigation: React.FC = function () {
           <NavLink to="/search"><div className="search-icon" /></NavLink>
         </li>
         <li>
-          <NavLink to="/auth"><div className="user-icon" /></NavLink>
+          <NavLink to="/profile"><div className="user-icon" /></NavLink>
         </li>
         <li>
           <NavLink to="/basket"><div className="basket-icon" /></NavLink>
