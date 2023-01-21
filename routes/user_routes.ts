@@ -1,16 +1,17 @@
 import { Router, Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { MongoServerError } from 'mongodb';
+import { MongoServerError, ObjectId } from 'mongodb';
 import { usersCollection } from '../services/servicesdb';
 import {
   IUser,
   IRegistrationAnswer,
   IJWTObject,
   IAuthAnswer,
+  IProfile,
 } from '../types/interfaces';
-// import passport from 'passport';
-// import { StrategyOptions } from 'passport-jwt';
+import passport from 'passport';
+import { Strategy, ExtractJwt, StrategyOptions } from 'passport-jwt';
 
 const router: Router = Router();
 
@@ -22,27 +23,27 @@ router.post('/registration', async (req: Request, res: Response) => {
       const uniqueness = await usersCollection.findOne({ email: email });
       uniqueness
         ? res
-            .status(400)
-            .send({
-              success: false,
-              message: 'User with such email already exists.',
-            })
+          .status(400)
+          .send({
+            success: false,
+            message: 'User with such email already exists.',
+          })
         : bcrypt.hash(password, 10, async function (err, hash) {
-            const newUser: IUser = {
-              firstName: firstName,
-              lastName: lastName,
-              email: email,
-              password: hash,
-              age: age,
-              role: 'user',
-            };
-            const registrationAnswer: IRegistrationAnswer = {
-              success: true,
-              message: 'User successfully registered.',
-            };
-            await usersCollection.insertOne(newUser),
-              res.status(201).send(registrationAnswer);
-          });
+          const newUser: IUser = {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: hash,
+            age: age,
+            role: 'user',
+          };
+          const registrationAnswer: IRegistrationAnswer = {
+            success: true,
+            message: 'User successfully registered.',
+          };
+          await usersCollection.insertOne(newUser),
+            res.status(201).send(registrationAnswer);
+        });
     } catch (error) {
       if (error instanceof MongoServerError) {
         console.log(`Error worth logging: ${error}`);
@@ -83,8 +84,8 @@ router.post('/auth', async (req: Request, res: Response) => {
           result
             ? res.status(201).send(authAnswer)
             : res
-                .status(400)
-                .send({ success: false, message: 'Hacking attempt' });
+              .status(400)
+              .send({ success: false, message: 'Hacking attempt' });
         }
       });
     } catch (error) {
@@ -97,5 +98,29 @@ router.post('/auth', async (req: Request, res: Response) => {
       .send({ success: false, message: 'No user with such email' });
   }
 });
+
+router.get('http://localhost:5000/api/user/autharization', async (req: Request, res: Response) => {
+  let options: StrategyOptions = {
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    secretOrKey: 'petshop',
+  }
+  passport.use(new Strategy(options, async function (jwt_payload) {
+    console.log(jwt_payload)
+    const user = await usersCollection.findOne({ _id: new ObjectId(jwt_payload.id) });
+    if (user) {
+      const profile: IProfile = {
+        success: true,
+        id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        age: user.age,
+        role: user.role,
+      }
+      res
+        .status(200)
+        .send(profile)
+    }
+  }))
+})
 
 module.exports = router;

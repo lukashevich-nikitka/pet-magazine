@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createReducer, PayloadAction } from '@reduxjs/toolkit';
-import authThunks from './auth_thunks';
+import loginThunks from './login_thunks';
 
 interface IAuthState {
   success: boolean | null;
@@ -12,7 +12,7 @@ const initialState: IAuthState = {
   message: null,
 };
 
-const { auth } = authThunks;
+const { auth } = loginThunks;
 
 const authReducer = createReducer(initialState, {
   [auth.fulfilled.type]: (

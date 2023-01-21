@@ -6,12 +6,12 @@ import {
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useAppDispatch } from '../../types/redux-hooks';
-import authThunks from '../../store/auth/auth_thunks';
+import authThunks from '../../store/login/login_thunks';
 import { IAuthValue } from '../../types/interfaces';
 import '../../styles/login/login.scss';
 import HeaderController from '../main/header/header_controller';
 
-const Auth: React.FC = function ComposedTextField() {
+const Login: React.FC = function ComposedTextField() {
   const { auth } = authThunks;
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const {
@@ -77,4 +77,4 @@ const Auth: React.FC = function ComposedTextField() {
   );
 };
 
-export default Auth;
+export default Login;

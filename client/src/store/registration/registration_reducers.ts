@@ -19,8 +19,9 @@ const registrationReducer = createReducer(initialState, {
     state,
     action: PayloadAction<IRegistrationState>,
   ) => {
-    state.success = action.payload.success;
-    state.message = action.payload.message;
+    const { success, message } = action.payload;
+    state.success = success;
+    state.message = message;
   },
 });
 

@@ -1,10 +1,12 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import registrationReducer from './registration/registration_reducers';
-import authReducer from './auth/auth_reducers';
+import loginReducer from './login/login_reducers';
+import profileReducer from './profile/profile_reducers';
 
 const registration = combineReducers({
   registration: registrationReducer,
-  auth: authReducer,
+  auth: loginReducer,
+  profile: profileReducer,
 });
 
 const store = configureStore({

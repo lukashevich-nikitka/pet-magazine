@@ -28,4 +28,13 @@ interface IAuthAnswer {
   token: string,
 }
 
-export type { IUser, IRegistrationAnswer, IJWTObject, IAuthAnswer }
+interface IProfile {
+  success: boolean,
+  id: ObjectId,
+  firstName: string,
+  lastName: string,
+  age: number,
+  role: string,
+}
+
+export type { IUser, IRegistrationAnswer, IJWTObject, IAuthAnswer, IProfile }
