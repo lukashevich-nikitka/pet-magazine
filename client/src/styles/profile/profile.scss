@@ -1,0 +1,22 @@
+@import '../mixins.scss';
+
+.profile-container {
+    @include default-maket-settings(#FFFFFF, black);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .user-data {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        h1 {
+            @include main-title(_, 700, _, black);
+        }
+    }
+    .user-purchases {
+        .purchases-wrapper {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}

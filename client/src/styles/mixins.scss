@@ -53,12 +53,14 @@
     color: $color;
 }
 
-@mixin under-header-images($background-image: '../../../assets/svg/under-header-lines.svg', $width: 4.7vw, $height: 3.3vw) {
+@mixin under-header-images($background-image: '../../../assets/svg/under-header-lines.svg', $width: 4.7vw, $height: 3.3vw, $min-width: 57px, $min-height: 39px) {
     background-image: url($background-image);
     background-repeat: no-repeat;
     background-size: contain;
     width: $width;
     height: $height;
+    min-width: $min-width;
+    min-height: $min-height;
 }
 
 @mixin buttons-settings($height: 78px, $width: 284px, $background-color: #FFFFFF, $color: #0D4266, $border-radius: 10px, $border: 0px) {

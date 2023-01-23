@@ -26,12 +26,14 @@ const profileReducer = createReducer(initialState, {
       success, firstName, lastName, age, role, id,
     } = action.payload;
     if (success) {
+      state.success = success;
       state.id = id;
       state.firstName = firstName;
       state.lastName = lastName;
       state.age = age;
       state.role = role;
     } else {
+      state.success = success;
       state.firstName = null;
       state.lastName = null;
       state.age = null;

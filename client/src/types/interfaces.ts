@@ -1,17 +1,15 @@
 /* eslint-disable import/prefer-default-export */
 
-interface IFormValues {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  repeatPassword: string;
-  age: number;
-}
-
 interface IAuthValue {
   email: string;
   password: string;
+}
+
+interface IFormValues extends IAuthValue{
+  firstName: string;
+  lastName: string;
+  repeatPassword: string;
+  age: number;
 }
 
 export type { IFormValues, IAuthValue };

@@ -15,26 +15,23 @@ interface IRegistrationAnswer {
 }
 
 interface IJWTObject {
-  id: ObjectId,
+  id: ObjectId | string,
   firstName: string,
   lastName: string,
   age: number,
   role: string,
 }
 
-interface IAuthAnswer {
-  success: boolean,
-  message: string,
+interface IAuthAnswer extends IRegistrationAnswer{
   token: string,
 }
 
-interface IProfile {
-  success: boolean,
-  id: ObjectId,
-  firstName: string,
-  lastName: string,
-  age: number,
-  role: string,
+interface IProfile extends IJWTObject{
+  success: boolean;
 }
 
-export type { IUser, IRegistrationAnswer, IJWTObject, IAuthAnswer, IProfile }
+interface IDecodedJWT extends IJWTObject {
+  iat: number;
+}
+
+export type { IUser, IRegistrationAnswer, IJWTObject, IAuthAnswer, IProfile, IDecodedJWT }

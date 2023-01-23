@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import {
   Box, FormControl, Input, InputLabel, InputAdornment, Button, IconButton,
 } from '@mui/material';
@@ -22,8 +22,11 @@ const Login: React.FC = function ComposedTextField() {
     event.preventDefault();
   };
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const onSubmit: SubmitHandler<IAuthValue> = (data) => {
-    dispatch(auth(data));
+    dispatch(auth(data)).then((res) => {
+      res.payload.success ? navigate('/profile') : navigate('/auth');
+    })
   };
   return (
     <>

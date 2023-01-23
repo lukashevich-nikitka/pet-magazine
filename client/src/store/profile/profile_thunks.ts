@@ -1,11 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios, { AxiosError } from 'axios';
 
-const autharization = createAsyncThunk('autharization', async () => {
+const autharization = createAsyncThunk('autharization', async (jwt: string) => {
   try {
-    const jwt = localStorage.getItem('jwt');
     const response = await axios.get('http://localhost:5000/api/user/autharization', {
-      headers: { Authorization: `Bearer ${jwt}` },
+      headers: { autharization: `${jwt}` },
     });
     return response.data;
   } catch (error) {
