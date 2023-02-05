@@ -7,6 +7,8 @@ const client: mongoDB.MongoClient = new mongoDB.MongoClient(
 
 export const usersCollection: mongoDB.Collection = client.db().collection('users');
 
+export const productsCollection: mongoDB.Collection = client.db().collection('products');
+
 export async function connectToDatabase() {
   dotenv.config();
 
