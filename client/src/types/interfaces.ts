@@ -5,7 +5,7 @@ interface IAuthValue {
   password: string;
 }
 
-interface IFormValues extends IAuthValue{
+interface IFormValues extends IAuthValue {
   firstName: string;
   lastName: string;
   repeatPassword: string;

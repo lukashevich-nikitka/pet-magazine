@@ -26,7 +26,7 @@ const Login: React.FC = function ComposedTextField() {
   const onSubmit: SubmitHandler<IAuthValue> = (data) => {
     dispatch(auth(data)).then((res) => {
       res.payload.success ? navigate('/profile') : navigate('/auth');
-    })
+    });
   };
   return (
     <>
