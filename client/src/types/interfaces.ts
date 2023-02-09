@@ -12,4 +12,12 @@ interface IFormValues extends IAuthValue {
   age: number;
 }
 
-export type { IFormValues, IAuthValue };
+interface IProduct {
+  id: string | null;
+  name: string | null;
+  size: string | null;
+  price: string | null;
+  chapter: string | null;
+}
+
+export type { IFormValues, IAuthValue, IProduct };
