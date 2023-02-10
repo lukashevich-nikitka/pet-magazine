@@ -18,6 +18,7 @@ interface IProduct {
   size: string | null;
   price: string | null;
   chapter: string | null;
+  rating?: string | null;
 }
 
 export type { IFormValues, IAuthValue, IProduct };

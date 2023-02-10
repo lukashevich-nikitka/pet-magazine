@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
 import bcrypt from 'bcrypt';
-import jwt, { JwtPayload } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 import { MongoServerError, ObjectId } from 'mongodb';
 import { usersCollection } from '../services/servicesdb';
 import {

@@ -15,11 +15,11 @@ interface IRegistrationAnswer {
 }
 
 interface IJWTObject {
-  id: ObjectId | string,
-  firstName: string,
-  lastName: string,
-  age: number,
-  role: string,
+  id: ObjectId | string;
+  firstName: string;
+  lastName: string;
+  age: number;
+  role: string;
 }
 
 interface IAuthAnswer extends IRegistrationAnswer{
@@ -34,4 +34,13 @@ interface IDecodedJWT extends IJWTObject {
   iat: number;
 }
 
-export type { IUser, IRegistrationAnswer, IJWTObject, IAuthAnswer, IProfile, IDecodedJWT }
+interface IProduct {
+  id: ObjectId | string;
+  name: string;
+  size: string;
+  price: string;
+  chapter: string;
+  rating: string;
+}
+
+export type { IUser, IRegistrationAnswer, IJWTObject, IAuthAnswer, IProfile, IDecodedJWT, IProduct }
