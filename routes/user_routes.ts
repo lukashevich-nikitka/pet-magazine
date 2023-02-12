@@ -116,8 +116,4 @@ router.get('/autharization', async (req: Request, res: Response) => {
   }
 });
 
-router.get('/cats_products', (req: Request, res: Response) => {
-  
-})
-
 module.exports = router;

@@ -1,15 +1,16 @@
 /* eslint-disable global-require */
 import React from 'react';
 import '../../styles/common_components/product_card.scss';
-import ProductImage from '../../assets/images/cat-litter.jpg';
 import { IProduct } from '../../types/interfaces';
 
 const ProductCard: React.FC<IProduct> = function (props) {
-  const { name, size, price } = props;
+  const {
+    name, size, price, id,
+  } = props;
   return (
     <div className="product-card">
       <div className="product-view-part">
-        <div><img src={ProductImage} alt="product" /></div>
+        <div><img src={`http://localhost:5000/${id}.jpg`} alt="product" /></div>
         <span>{name}</span>
       </div>
       <div className="product-icons">

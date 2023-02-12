@@ -19,9 +19,11 @@ app.use(
     })
 );
 
+app.use(express.static('images/products'));
+
 connectToDatabase().then(() => {
     app.use("/api/user", require("./routes/user_routes"));
-    app.use("/api/product/hit_of_sales", require("./routes/product_routes"));
+    app.use("/api/product/", require("./routes/product_routes"));
     app.listen(PORT, () => console.log(`Server has been started on port: ${PORT}`));
 }).catch((error: Error) => {
     console.error("Database connection failed", error);
